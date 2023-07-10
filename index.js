@@ -7,12 +7,16 @@ require('dotenv').config();
 const PORT = process.env.PORT || 5000;
 
 
-app.use(cors({
-    origin: 'https://faizanak-portfolio.netlify.app',
-    methods: ['GET', 'HEAD', 'OPTIONS', 'POST', 'PUT'],
-    allowedHeaders: ['Origin', 'X-Requested-With', 'Content-Type', 'Accept', 'x-client-key', 'x-client-token', 'x-client-secret', 'Authorization']
-  }));
+app.use(cors());
 
+// Rest of your code
+
+app.use((req, res, next) => {
+  res.header('Access-Control-Allow-Origin', 'https://faizanak-portfolio.netlify.app');
+  res.header('Access-Control-Allow-Methods', 'GET, POST, PUT');
+  res.header('Access-Control-Allow-Headers', 'Origin, X-Requested-With, Content-Type, Accept');
+  next();
+});
 app.use(express.json());
 
 const routes = require('./routes/files');
