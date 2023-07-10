@@ -6,12 +6,13 @@ require('dotenv').config()
 
 const PORT = process.env.PORT || 5000
 app.use(function (req, res, next) {
-    //Enabling CORS
-    res.header("Access-Control-Allow-Origin", "https://faizanak-portfolio.netlify.app/");
+    // Enabling CORS
+    res.header("Access-Control-Allow-Origin", "https://faizanak-portfolio.netlify.app");
     res.header("Access-Control-Allow-Methods", "GET,HEAD,OPTIONS,POST,PUT");
     res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept, x-client-key, x-client-token, x-client-secret, Authorization");
-      next();
-    });
+    next();
+  });
+  
 
 app.use(express.json())
 
