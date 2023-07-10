@@ -6,13 +6,11 @@ require('dotenv').config();
 
 const PORT = process.env.PORT || 5000;
 
-const corsOptions = {
-  origin: '*',
-  credentials: true,
-  optionSuccessStatus: 200
-};
-
-app.use(cors(corsOptions));
+app.use(cors({
+  origin: 'https://faizanak-portfolio.netlify.app',
+  methods: ['GET', 'HEAD', 'OPTIONS', 'POST', 'PUT'],
+  allowedHeaders: ['Origin', 'X-Requested-With', 'Content-Type', 'Accept', 'x-client-key', 'x-client-token', 'x-client-secret', 'Authorization']
+}));
 
 app.use(express.json());
 
