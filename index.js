@@ -11,12 +11,12 @@ app.use(cors());
 
 // Rest of your code
 
-app.use((req, res, next) => {
-  res.header('Access-Control-Allow-Origin', 'https://faizanak-portfolio.netlify.app');
-  res.header('Access-Control-Allow-Methods', 'GET, POST, PUT');
-  res.header('Access-Control-Allow-Headers', 'Origin, X-Requested-With, Content-Type, Accept');
-  next();
-});
+app.use('/api/contact', (req, res, next) => {
+    res.header('Access-Control-Allow-Origin', 'https://faizanak-portfolio.netlify.app');
+    res.header('Access-Control-Allow-Methods', 'GET, POST, PUT');
+    res.header('Access-Control-Allow-Headers', 'Origin, X-Requested-With, Content-Type, Accept');
+    next();
+  });
 app.use(express.json());
 
 const routes = require('./routes/files');
