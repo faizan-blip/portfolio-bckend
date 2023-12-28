@@ -11,7 +11,7 @@ const User = new mongoose.Schema({
     },
     phone:{
         type:String,
-        required:true,
+        // required:true,
     },
     subject:{
         type:String,
@@ -23,7 +23,7 @@ const User = new mongoose.Schema({
     },
     createdAt:{
         type:Date,
-        required:true,
+        // required:true,
         default:Date.now()
     }
 })

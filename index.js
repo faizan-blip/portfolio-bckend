@@ -1,28 +1,25 @@
 const express = require('express');
 const app = express();
 const cors = require('cors');
-const dbConnect = require('./config/database');
 require('dotenv').config();
 
 const PORT = process.env.PORT || 5000;
 
+const corsOptions = {
+  origin: '*',
+  methods: 'GET,HEAD,PUT,PATCH,POST,DELETE',
+  credentials: true,
+  optionsSuccessStatus: 204,
+  allowedHeaders: 'Content-Type,Authorization',
+};
 
-app.use(cors());
-
-// Rest of your code
-
-app.use('/api/contact', (req, res, next) => {
-    res.header('Access-Control-Allow-Origin', 'https://faizanak-portfolio.netlify.app');
-    res.header('Access-Control-Allow-Methods', 'GET, POST, PUT');
-    res.header('Access-Control-Allow-Headers', 'Origin, X-Requested-With, Content-Type, Accept');
-    next();
-  });
+// Apply CORS middleware to all routes
+app.use(cors(corsOptions));
 app.use(express.json());
 
 const routes = require('./routes/files');
-app.use('/api/contact', routes);
+app.use('/api', routes);
 
-dbConnect();
 
 app.listen(PORT, () => {
   console.log("Port is running successfully");

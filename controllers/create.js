@@ -1,18 +1,18 @@
-const user = require('../models/createschema')
+const user = require('../models/createschema');
+const sendmessage = require('./sendmessage');
 
 
 exports.create = async(req,res)=>{
     try{
       
         const{name , email , phone , subject , message} = req.body
-            
-        const response = await user.create({name , email , phone , subject , message})
-          res.status(200).json({
-            status:true,
-            data:response,
-            message:"Created the data in the mongoDb"
-          })
-
+        res.status(200).json({
+          status:true,
+          data:name,
+          message:"We will contact you soon",
+        })      
+        await sendmessage(name , email , phone , subject , message)       
+        
     }catch(err){
         console.error(err);
         console.log(err);
